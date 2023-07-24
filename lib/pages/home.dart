@@ -72,16 +72,24 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: ListView.builder(
-        itemCount: toDoList.length,
-        itemBuilder: (context, index) {
-          return ToDoTile(
-            taskName: toDoList[index][0],
-            taskCompleted: toDoList[index][1],
-            onChanged: (value) => checkBoxChanged(value, index),
-            onDelete: (context) => deleteTask(index),
-          );
-        },
+      body: Column(
+        // Zmiana na Column zamiast ListView
+        children: [
+          Expanded(
+            // Expanded dla listy zadań
+            child: ListView.builder(
+              itemCount: toDoList.length,
+              itemBuilder: (context, index) {
+                return ToDoTile(
+                  taskName: toDoList[index][0],
+                  taskCompleted: toDoList[index][1],
+                  onChanged: (value) => checkBoxChanged(value, index),
+                  onDelete: () => deleteTask(index),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

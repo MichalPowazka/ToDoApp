@@ -4,14 +4,14 @@ class ToDoTile extends StatelessWidget {
   final String taskName;
   final bool taskCompleted;
   Function(bool?)? onChanged;
-  Function(BuildContext)? onDelete;
+  VoidCallback? onDelete; // Dodaj parametr onDelete
 
   ToDoTile({
     Key? key,
     required this.taskName,
     required this.taskCompleted,
     required this.onChanged,
-    required this.onDelete,
+    this.onDelete, // Dodaj parametr do konstruktora
   });
 
   @override
@@ -48,8 +48,8 @@ class ToDoTile extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(Icons.delete),
-              onPressed: onDelete,
               color: Colors.black,
+              onPressed: onDelete,
             ),
           ],
         ),
