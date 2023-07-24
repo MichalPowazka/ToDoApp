@@ -1,16 +1,17 @@
-// ignore_for_file: sort_child_properties_last
-
 import 'package:flutter/material.dart';
 
 class ToDoTile extends StatelessWidget {
   final String taskName;
   final bool taskCompleted;
   Function(bool?)? onChanged;
+  Function(BuildContext)? onDelete;
+
   ToDoTile({
-    super.key,
+    Key? key,
     required this.taskName,
     required this.taskCompleted,
     required this.onChanged,
+    required this.onDelete,
   });
 
   @override
@@ -18,27 +19,39 @@ class ToDoTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, right: 25, top: 25),
       child: Container(
-        padding: EdgeInsets.all(24),
-        child: Row(
-          children: [
-            //checkbox
-            Checkbox(
-              value: taskCompleted,
-              onChanged: onChanged,
-              activeColor: Colors.black,
-            ),
-
-            Text(
-              taskName,
-              style: TextStyle(
-                  fontWeight:
-                      taskCompleted ? FontWeight.w800 : FontWeight.normal),
-            ),
-          ],
-        ),
+        padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: Colors.green,
           borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  // First checkbox
+                  Checkbox(
+                    value: taskCompleted,
+                    onChanged: onChanged,
+                    activeColor: Colors.black,
+                  ),
+                  Text(
+                    taskName,
+                    style: TextStyle(
+                      fontWeight:
+                          taskCompleted ? FontWeight.w800 : FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: onDelete,
+              color: Colors.black,
+            ),
+          ],
         ),
       ),
     );

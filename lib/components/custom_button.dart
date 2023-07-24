@@ -5,7 +5,7 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final IconData iconData;
 
-  CustomButton(
+  const CustomButton(
       {required this.text, required this.onPressed, required this.iconData});
 
   @override
@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(iconData),
-          SizedBox(width: 8), // Dodatkowy odstęp między ikoną a tekstem
+          const SizedBox(width: 8), // Dodatkowy odstęp między ikoną a tekstem
           Text(text),
         ],
       ),

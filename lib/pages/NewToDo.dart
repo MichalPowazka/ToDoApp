@@ -11,7 +11,7 @@ class NewToDo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add New Task'),
+        title: const Text('Add New Task'),
       ),
       body: Center(
         child: Column(
@@ -23,13 +23,13 @@ class NewToDo extends StatelessWidget {
               child: TextField(
                 controller: controller,
                 maxLines: 6,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Add a new Task",
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             CustomButton(
               text: 'Save',
               iconData: Icons.save,
